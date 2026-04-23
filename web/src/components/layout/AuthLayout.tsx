@@ -29,12 +29,25 @@ export const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => (
       </div>
     </div>
 
-    <div className="flex-1 flex items-center justify-center p-6 lg:p-10 bg-page-bg">
-      <div className="w-full max-w-md">
-        <div className="mb-8 lg:hidden inline-flex items-center bg-[#0a1f4e] rounded-lg px-3 py-1.5">
-          <img src="/logo.svg" alt="SendFlow" className="h-7 w-auto" />
-        </div>
+    <div className="flex-1 flex flex-col lg:items-center lg:justify-center bg-page-bg">
+      <div
+        className="lg:hidden w-full flex flex-col items-start justify-end px-6 pt-10 pb-8"
+        style={{
+          background:
+            'linear-gradient(135deg, #080f20 0%, #0a1f4e 60%, #0059e8 100%)',
+          minHeight: '200px',
+        }}
+      >
+        <img src="/logo.svg" alt="SendFlow" className="h-8 w-auto mb-6" />
+        <h1 className="font-heading font-extrabold text-white text-2xl leading-tight mb-2">
+          Mensagens certas,<br />na hora certa.
+        </h1>
+        <p className="text-white/70 text-sm">
+          Gerencie contatos, crie mensagens e agende envios com precisão.
+        </p>
+      </div>
 
+      <div className="w-full max-w-md px-6 py-8 lg:p-10">
         <h2 className="font-heading font-bold text-main-text text-2xl mb-1">{title}</h2>
         <p className="text-muted-text text-sm mb-8">{subtitle}</p>
 
