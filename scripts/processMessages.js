@@ -14,16 +14,19 @@ async function processMessages() {
   const snapshot = await db
     .collection('messages')
     .where('status', '==', 'agendada')
-    .where('scheduledAt', '<=', now)
     .get()
 
-  if (snapshot.empty) {
+  const due = snapshot.docs.filter(
+    (doc) => doc.data().scheduledAt.toMillis() <= now.toMillis()
+  )
+
+  if (due.length === 0) {
     console.log('Nenhuma mensagem para processar.')
     return
   }
 
   const batch = db.batch()
-  snapshot.docs.forEach((doc) => {
+  due.forEach((doc) => {
     batch.update(doc.ref, {
       status: 'enviada',
       sentAt: now,
@@ -32,7 +35,7 @@ async function processMessages() {
   })
 
   await batch.commit()
-  console.log(`${snapshot.size} mensagem(ns) processada(s).`)
+  console.log(`${due.length} mensagem(ns) processada(s).`)
 }
 
 processMessages().catch((err) => {
