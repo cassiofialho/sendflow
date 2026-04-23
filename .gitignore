@@ -1,0 +1,29 @@
+# Firebase
+.firebase/
+firebase-debug.log
+.firebaserc.local
+
+# Node
+node_modules/
+web/node_modules/
+functions/node_modules/
+
+# Build outputs
+web/dist/
+functions/lib/
+
+# Environment
+web/.env.local
+web/.env
+
+# IDE
+.vscode/
+.idea/
+
+# Scripts
+scripts/node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+prompt.txt
